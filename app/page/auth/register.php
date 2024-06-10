@@ -53,7 +53,7 @@ if (isset($_POST['register'])) {
                             <form class="user" method="POST">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control " name="nama" id="nama" placeholder="nama">
+                                        <input type="text" class="form-control " name="nama" id="nama" placeholder="nama" autofocus required>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control " name="username" id="username" placeholder="username">
@@ -77,10 +77,10 @@ if (isset($_POST['register'])) {
 
                             </form>
                             <hr>
-                            <a href="index.html" class="btn btn-google btn-user btn-block">
+                            <a href="../user/index.php" class="btn btn-google btn-user btn-block">
                                 <i class="fab fa-google fa-fw"></i> Login with Google
                             </a>
-                            <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                            <a href="../user/index.php" class="btn btn-facebook btn-user btn-block">
                                 <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                             </a>
 
