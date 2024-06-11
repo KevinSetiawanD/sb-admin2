@@ -2,6 +2,7 @@
 
 require('../../../database/koneksi.php');
 
+
 if (isset($_POST['register'])) {
 
     $nama     = $_POST['nama'];
@@ -9,7 +10,9 @@ if (isset($_POST['register'])) {
     $role     = $_POST['role'];
     $password = $_POST['password'];
 
-    $query_sql = "INSERT INTO user (id_user, nama, username, password, role) VALUES (NULL,'$nama','$username','$role''$password','$role')";
+
+    $hashPassword = password_hash('$password', PASSWORD_BCRYPT);
+    $query_sql = "INSERT INTO user (id_user, nama, username, password, role) VALUES (NULL,'$nama','$username','$hashPassword','$role')";
     $result = mysqli_query($koneksi, $query_sql);
 }
 ?>
@@ -25,14 +28,9 @@ if (isset($_POST['register'])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Register</title>s
-
-    <!-- Custom fonts for this template-->
+    <title>Register</title>
     <link href="../../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="../../../assets/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -76,17 +74,8 @@ if (isset($_POST['register'])) {
 
 
                             </form>
-                            <hr>
-                            <a href="../user/index.php" class="btn btn-google btn-user btn-block">
-                                <i class="fab fa-google fa-fw"></i> Login with Google
-                            </a>
-                            <a href="../user/index.php" class="btn btn-facebook btn-user btn-block">
-                                <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                            </a>
+                            <hr>                          
 
-                            <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
                             <div class="text-center">
                                 <a class="small" href="../auth/login.php">Already have an account? Login!</a>
                             </div>
@@ -97,15 +86,15 @@ if (isset($_POST['register'])) {
         </div>
 
     </div>
-    <!-- Bootstrap core JavaScript-->
+    
+    <link href="../../../assets/css/sb-admin-2.min.css" rel="stylesheet">
     <script src="../../../assets/vendor/jquery/jquery.min.js"></script>
     <script src="../../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
     <script src="../../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
     <script src="../../../assets/js/sb-admin-2.min.js"></script>
+    <script src="../../../assets/vendor/chart.js/Chart.min.js"></script>
+    <script src="../../../assets/js/demo/chart-area-demo.js"></script>
+    <script src="../../../assets/js/demo/chart-pie-demo.js"></script>
 
 </body>
 

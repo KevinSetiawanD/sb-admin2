@@ -2,14 +2,22 @@
 
 require('../../../database/koneksi.php');
 
-if (isset($_POST['login'])) {
+if (isset($_POST['kirim'])) {
 
-    $nama = $_POST["nama"];
+    $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $query_sql = "SELECT * FROM kasir WHERE nama = '$nama' AND passsword = '$password'";
-
+    $query_sql = "SELECT * FROM user WHERE username = '$username'";
+    
     $result = mysqli_query($koneksi, $query_sql);
+    
+    if(mysqli_num_rows($result) === 1 ) {
+        $row = mysqli_fetch_assoc($result);
+        if(password_verify($password, $row["password"])){
+            header("Location: ../../index.php");
+        }
+    }
+
 }
 ?>
 <!DOCTYPE html>
@@ -23,14 +31,10 @@ if (isset($_POST['login'])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>FORM LOGIN</title>
-
-    <!-- Custom fonts for this template-->
+    <title>LOGIN</title>
     <link href="../../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <!-- Custom styles for this template-->
-    <link href="../../../assets/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -53,35 +57,17 @@ if (isset($_POST['login'])) {
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form method="post" class="user">
                                         <div class="form-group">
-                                            <input type="nama" class="form-control" id="nama" placeholder="Name">
+                                            <input type="username" class="form-control" id="username" name="username" placeholder="Username">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" name="password" class="form-control"  placeholder="Password">
                                         </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
-                                            </div>
-                                        </div>
-                                        <a href="../../index.php" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+                                        <button type="submit" name="kirim" class="btn btn-primary btn-user btn-block">Login</button>
                                         <hr>
-                                        <a href="../../index.php" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="../../index.php" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
                                     </form>
                                     <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
                                     <div class="text-center">
                                         <a class="small" href="register.php">Create an Account!</a>
                                     </div>
@@ -96,16 +82,15 @@ if (isset($_POST['login'])) {
         </div>
 
     </div>
-
-    <!-- Bootstrap core JavaScript-->
+    
+    <link href="../../../assets/css/sb-admin-2.min.css" rel="stylesheet">
     <script src="../../../assets/vendor/jquery/jquery.min.js"></script>
     <script src="../../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
     <script src="../../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
     <script src="../../../assets/js/sb-admin-2.min.js"></script>
+    <script src="../../../assets/vendor/chart.js/Chart.min.js"></script>
+    <script src="../../../assets/js/demo/chart-area-demo.js"></script>
+    <script src="../../../assets/js/demo/chart-pie-demo.js"></script>
 
 </body>
 
