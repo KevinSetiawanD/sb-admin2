@@ -74,7 +74,7 @@ if (isset($_POST['register'])) {
 
 
                             </form>
-                            <hr>                          
+                            <hr>
 
                             <div class="text-center">
                                 <a class="small" href="../auth/login.php">Already have an account? Login!</a>
@@ -86,7 +86,7 @@ if (isset($_POST['register'])) {
         </div>
 
     </div>
-    
+
     <link href="../../../assets/css/sb-admin-2.min.css" rel="stylesheet">
     <script src="../../../assets/vendor/jquery/jquery.min.js"></script>
     <script src="../../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

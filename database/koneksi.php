@@ -1,28 +1,29 @@
-<?php 
+<?php
 $host       = "localhost";
 $user       = "root";
 $pass       = "";
 $db         = "kasir";
 
-$koneksi    = mysqli_connect($host,$user,$pass,$db);
-if(!$koneksi){
+$koneksi    = mysqli_connect($host, $user, $pass, $db);
+if (!$koneksi) {
     die("Tidak bisa terkoneksi ke database");
 }
 
-
-function query($query) {
+function query($query)
+{
     global $koneksi;
 
     $result = mysqli_query($koneksi, $query);
     $rows = [];
-    while( $row = mysqli_fetch_assoc($result)) {
-        $rows[] = $row; 
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
     }
     return $rows;
 }
 
 
-function tambah($data) {
+function tambah($data)
+{
     global $koneksi;
 
     $nama = $data["nama"];
@@ -36,14 +37,16 @@ function tambah($data) {
     return mysqli_affected_rows($koneksi);
 }
 
-function hapus($id) {
+function hapus($id)
+{
     global $koneksi;
     mysqli_query($koneksi, "DELETE FROM user WHERE id = $id");
 
     return mysqli_affected_rows($koneksi);
 }
 
-function ubah($data) {
+function ubah($data)
+{
     global $koneksi;
 
     $id = $data["id"];
@@ -62,8 +65,4 @@ function ubah($data) {
     mysqli_query($koneksi, $query);
 
     return mysqli_affected_rows($koneksi);
-
 }
-
-?>
-

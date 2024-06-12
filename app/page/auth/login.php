@@ -2,22 +2,21 @@
 
 require('../../../database/koneksi.php');
 
-if (isset($_POST['kirim'])) {
+if (isset($_POST["login"])) {
 
     $username = $_POST["username"];
     $password = $_POST["password"];
 
     $query_sql = "SELECT * FROM user WHERE username = '$username'";
-    
+
     $result = mysqli_query($koneksi, $query_sql);
-    
-    if(mysqli_num_rows($result) === 1 ) {
+
+    if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
-        if(password_verify($password, $row["password"])){
+        if (password_verify($password, $row["password"])) {
             header("Location: ../../index.php");
         }
     }
-
 }
 ?>
 <!DOCTYPE html>
@@ -59,12 +58,12 @@ if (isset($_POST['kirim'])) {
                                     </div>
                                     <form method="post" class="user">
                                         <div class="form-group">
-                                            <input type="username" class="form-control" id="username" name="username" placeholder="Username">
+                                            <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" class="form-control"  placeholder="Password">
+                                            <input type="password" name="password" class="form-control" placeholder="Password">
                                         </div>
-                                        <button type="submit" name="kirim" class="btn btn-primary btn-user btn-block">Login</button>
+                                        <button type="submit" name="login" class="btn btn-primary btn-user btn-block">Login</button>
                                         <hr>
                                     </form>
                                     <hr>
@@ -82,7 +81,7 @@ if (isset($_POST['kirim'])) {
         </div>
 
     </div>
-    
+
     <link href="../../../assets/css/sb-admin-2.min.css" rel="stylesheet">
     <script src="../../../assets/vendor/jquery/jquery.min.js"></script>
     <script src="../../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

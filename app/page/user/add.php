@@ -1,11 +1,7 @@
 <?php
-require '../layout/sidebar.php';
-require '../layout/header.php';
-require '../layout/footer.php';
-require '../../../database/koneksi.php';
 
-if( isset($_POST["submit"])) {
-    if(tambah($_POST) > 0 ) {
+if (isset($_POST["submit"])) {
+    if (tambah($_POST) > 0) {
         echo "data berhasil ditambahkan";
     } else {
         echo "data gagal ditambahkan";
@@ -27,23 +23,26 @@ if( isset($_POST["submit"])) {
         <form action="" method="post">
             <ul>
                 <li>
-                    <label for="nama">Nama : </label>
-                    <input type="text" name="nama" id="nama">
+                    <label for="nama">Nama : </label> <br>
+                    <input type="text" name="nama" id="nama" class="col-sm-10 mb-3 mb-sm-0">
                 </li>
                 <li>
-                    <label for="username">Username : </label>
-                    <input type="text" name="username" id="username">
+                    <label for="username">Username : </label> <br>
+                    <input type="text" name="username" id="username" class="col-sm-10 mb-3 mb-sm-0">
                 </li>
                 <li>
-                    <label for="role">Role : </label>
-                    <input type="text" name="role" id="role">
+                    <label for="role">Role : </label> <br>
+                    <select type="text" name="role" id="role" class="col-sm-10 mb-3 mb-sm-0">
+                        <option name="role" id="" value="admin">admin</option>
+                        <option name="role" id="" value="superAdmin">superAdmin</option>
+                    </select>
                 </li>
                 <li>
-                    <label for="password">Password : </label>
-                    <input type="password" name="password" id="passsword">
-                </li>
+                    <label for="password">Password : </label> <br>
+                    <input type="password" name="password" id="passsword" class="col-sm-10 mb-3 mb-sm-0">
+                </li> <br>
                 <li>
-                    <button type="submit" name="submit">tambah data</button>
+                    <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">Tambah data</button>
                 </li>
             </ul>
         </form>
