@@ -1,6 +1,5 @@
 <?php
 include '../database/koneksi.php';
-$orang = query("SELECT * FROM user");
 ?>
 
 <!DOCTYPE html>

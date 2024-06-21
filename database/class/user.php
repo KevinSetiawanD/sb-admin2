@@ -3,48 +3,50 @@
 class user
 {
 
-    public function tambah($data)
+    private $db;
+
+    public function __construct($db_conn)
     {
-        global $koneksi;
-
-        $nama = $data["nama"];
-        $username = $data["username"];
-        $password = $data["password"];
-        $role = $data["role"];
-
-        $query = "INSERT INTO user VALUES ('', '$nama', '$username', '$password', '$role' )";
-        mysqli_query($koneksi, $query);
-
-        return mysqli_affected_rows($koneksi);
+        $this->db = $db_conn;
     }
 
-    public function ubah($data)
+    public function tambah($nama, $username, $password, $role)
     {
-        global $koneksi;
 
-        $id = $data["id"];
-        $nama = $data["nama"];
-        $username = $data["username"];
-        $password = $data["password"];
-        $role = $data["role"];
+        $stmt = $this->db->prepare("INSERT INTO user VALUES ('', '$nama', '$username', '$password', '$role' )");
+        $stmt->execute();
 
-        $query = "UPDATE user SET 
-                    nama = '$nama',
-                    username = '$username',
-                    role = '$role',
-                    password = '$password'
-                    WHERE id = $id  
-                    ";
-        mysqli_query($koneksi, $query);
-
-        return mysqli_affected_rows($koneksi);
+        return true;
     }
 
-    public function hapus($id)
+    public function view()
     {
-        global $koneksi;
-        mysqli_query($koneksi, "DELETE FROM user WHERE id = $id");
+        $stmt = $this->db->prepare("SELECT * FROM user");
+        $stmt->execute();
 
-        return mysqli_affected_rows($koneksi);
+        return $stmt->fetchAll();
+    }
+
+    public function ubah($id_user, $nama, $username, $password, $role)
+    {
+        $stmt = $this->db->prepare("UPDATE user SET nama = '$nama', username = '$username', password = '$password', role = '$role' WHERE id_user = $id_user");
+        $stmt->execute();
+
+        return true;
+    }
+
+    public function hapus($id_user)
+    {
+        $stmt = $this->db->prepare("DELETE FROM user WHERE id_user = $id_user");
+        $stmt->execute();
+
+        return true;
+    }
+
+    public function getUser($id_user)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM user WHERE id_user = $id_user");
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

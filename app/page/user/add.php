@@ -1,11 +1,19 @@
 <?php
 
 if (isset($_POST["submit"])) {
-    if (tambah($_POST) > 0) {
-        echo "data berhasil ditambahkan";
-    } else {
-        echo "data gagal ditambahkan";
+    $nama = $_POST["nama"];
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $role = $_POST["role"];
+    $pdo = Koneksi::connect();
+
+    $user = new user($pdo);
+
+    if ($user->tambah($nama, $username, $password, $role)) {
+        echo "<script>window.location.href = 'index.php?page=user'</script>";
     }
+
+    $pdo = Koneksi::disconnect();
 }
 
 ?>

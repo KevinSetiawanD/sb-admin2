@@ -1,4 +1,7 @@
 <?php
+
+include '../database/class/user.php';
+
 $act = isset($_GET["act"]) ? $_GET["act"] : "";
 switch ($act) {
     case "create";

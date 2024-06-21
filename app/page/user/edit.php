@@ -1,16 +1,25 @@
 <?php
 
-$id = $_GET["id"];
-$org = query("SELECT * FROM user WHERE id = $id")[0];
+$id_user = $_GET["id"];
+
+$pdo = Koneksi::connect();
+$user = new user($pdo);
 
 if (isset($_POST["submit"])) {
-    if (ubah($_POST) > 0) {
-        echo "data berhasil diubahkan";
-    } else {
-        echo "data gagal diubahkan";
+    $nama = $_POST["nama"];
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $role = $_POST["role"];
+
+    if ($user->ubah($id_user, $nama, $username, $password, $role)) {
+        echo "<script>window.location.href = 'index.php?page=user'</script>";
     }
 }
+if (isset($id_user)) {
+    extract($user->getUser($id_user));
+}
 
+$pdo = Koneksi::disconnect();
 ?>
 
 <div class="container-fluid">
@@ -24,26 +33,28 @@ if (isset($_POST["submit"])) {
     <!-- Content Row -->
     <div class="row">
         <form action="" method="post">
-            <input type="hidden" name="id" value="<?= $org["id"]; ?>">
             <ul>
                 <li>
                     <label for="nama">Nama : </label>
-                    <input type="text" name="nama" id="nama" required value="<?= $org["nama"] ?>">
+                    <input type="text" name="nama" id="nama" class="col-sm-10 mb-3 mb-sm-0" required value="<?= $nama; ?>">
                 </li>
                 <li>
                     <label for="username">Username : </label>
-                    <input type="text" name="username" id="username" value="<?= $org["username"] ?>">
+                    <input type="text" name="username" id="username" class="col-sm-10 mb-3 mb-sm-0" value="<?= $username; ?>">
                 </li>
                 <li>
                     <label for="role">Role : </label>
-                    <input type="text" name="role" id="role" value="<?= $org["role"] ?>">
+                    <select class="form-control " name="role" id="role" class="col-sm-10 mb-3 mb-sm-0" value="<?= $roll ?>">
+                        <option value="admin">admin</option>
+                        <option value="superAdmin">superAdmin</option>
+                    </select>
                 </li>
                 <li>
                     <label for="password">Password : </label>
-                    <input type="password" name="password" id="passsword" value="<?= $org["password"] ?>">
-                </li>
+                    <input type="password" name="password" id="passsword" class="col-sm-10 mb-3 mb-sm-0" value="<?= $password; ?>">
+                </li> <br>
                 <li>
-                    <button type="submit" name="submit">ubah data</button>
+                    <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">ubah data</button>
                 </li>
             </ul>
         </form>

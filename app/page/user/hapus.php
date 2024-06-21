@@ -1,18 +1,14 @@
 <?php
 $id = $_GET["id"];
 
-if (hapus($id) > 0) {
-    echo "
-        <script>
-            alert('data berhasil dihapus');
-            document.location.href = 'index.php';
-        </script>
-    ";
-} else {
-    echo "
-        <script>
-            alert('data gagal dihapus');
-            document.location.href = 'index.php';
-        </script>
-    ";
+$pdo = Koneksi::connect();
+
+$user = new user($pdo);
+
+$cek = $user->hapus($id);
+
+if ($cek) {
+    echo "<script>window.location.href = 'index.php?page=user'</script>";
 }
+
+$pdo = Koneksi::disconnect();

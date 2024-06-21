@@ -24,7 +24,15 @@
                 </thead>
 
                 <?php $i = 1; ?>
-                <?php foreach ($orang as $row) :
+                <?php
+
+                $pdo = Koneksi::connect();
+                $user = new user($pdo);
+
+                $orang = $user->view();
+
+
+                foreach ($orang as $row) :
                 ?>
                     <tr>
 
@@ -38,7 +46,10 @@
                         </td>
                     </tr>
                     <?php $i++ ?>
-                <?php endforeach; ?>
+                <?php endforeach;
+
+                $pdo = Koneksi::disconnect();
+                ?>
             </table>
         </div>
 
