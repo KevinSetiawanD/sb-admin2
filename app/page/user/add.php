@@ -28,32 +28,36 @@ if (isset($_POST["submit"])) {
 
     <!-- Content Row -->
     <div class="row">
-        <form action="" method="post">
-            <ul>
-                <li>
-                    <label for="nama">Nama : </label> <br>
-                    <input type="text" name="nama" id="nama" class="col-sm-10 mb-3 mb-sm-0">
-                </li>
-                <li>
-                    <label for="username">Username : </label> <br>
-                    <input type="text" name="username" id="username" class="col-sm-10 mb-3 mb-sm-0">
-                </li>
-                <li>
-                    <label for="role">Role : </label> <br>
-                    <select type="text" name="role" id="role" class="col-sm-10 mb-3 mb-sm-0">
-                        <option name="role" id="" value="admin">admin</option>
-                        <option name="role" id="" value="superAdmin">superAdmin</option>
-                    </select>
-                </li>
-                <li>
-                    <label for="password">Password : </label> <br>
-                    <input type="password" name="password" id="passsword" class="col-sm-10 mb-3 mb-sm-0">
-                </li> <br>
-                <li>
-                    <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">Tambah data</button>
-                </li>
-            </ul>
-        </form>
+        <div class="col-12 col-sm-8  col-md-6 col-lg-6 col-xl-4">
+            <div class="card">
+                <form action="" method="post">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="nama">Nama : </label> <br>
+                            <input type="text" name="nama" id="nama">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username : </label> <br>
+                            <input type="text" name="username" id="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Role : </label> <br>
+                            <select type="text" name="role" id="role">
+                                <option name="role" id="" value="admin">admin</option>
+                                <option name="role" id="" value="superAdmin">superAdmin</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password : </label> <br>
+                            <input type="password" name="password" id="passsword">
+                        </div> <br>
+                        <div class="form-group">
+                            <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block col-20">Tambah data</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
 

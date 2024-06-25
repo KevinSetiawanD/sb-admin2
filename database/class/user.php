@@ -12,8 +12,9 @@ class user
 
     public function tambah($nama, $username, $password, $role)
     {
+        $hashPw = password_hash($password, PASSWORD_DEFAULT);
 
-        $stmt = $this->db->prepare("INSERT INTO user VALUES ('', '$nama', '$username', '$password', '$role' )");
+        $stmt = $this->db->prepare("INSERT INTO user VALUES ('', '$nama', '$username', '$hashPw', '$role' )");
         $stmt->execute();
 
         return true;

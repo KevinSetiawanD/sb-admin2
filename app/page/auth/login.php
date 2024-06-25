@@ -1,23 +1,22 @@
 <?php
 
-require('../../../database/koneksi.php');
-
 if (isset($_POST["login"])) {
-
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $query_sql = "SELECT * FROM user WHERE username = '$username'";
 
-    $result = mysqli_query($koneksi, $query_sql);
-
-    if (mysqli_num_rows($result) === 1) {
-        $row = mysqli_fetch_assoc($result);
-        if (password_verify($password, $row["password"])) {
-            header("Location: ../../index.php");
-        }
+    $pdo = Koneksi::connect();
+    $user = new auth($pdo);
+    if ($user->login($username, $password)) {
+        header("Location: index.php");
+    } else {
+        //jika gaal login
     }
+
+    $pdo =  Koneksi::disconnect();
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +30,7 @@ if (isset($_POST["login"])) {
     <meta name="author" content="">
 
     <title>LOGIN</title>
-    <link href="../../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 
@@ -68,7 +67,7 @@ if (isset($_POST["login"])) {
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="register.php">Create an Account!</a>
+                                        <a class="small" href="index.php?auth=register">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>
@@ -82,14 +81,14 @@ if (isset($_POST["login"])) {
 
     </div>
 
-    <link href="../../../assets/css/sb-admin-2.min.css" rel="stylesheet">
-    <script src="../../../assets/vendor/jquery/jquery.min.js"></script>
-    <script src="../../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="../../../assets/js/sb-admin-2.min.js"></script>
-    <script src="../../../assets/vendor/chart.js/Chart.min.js"></script>
-    <script src="../../../assets/js/demo/chart-area-demo.js"></script>
-    <script src="../../../assets/js/demo/chart-pie-demo.js"></script>
+    <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../assets/js/sb-admin-2.min.js"></script>
+    <script src="../assets/vendor/chart.js/Chart.min.js"></script>
+    <script src="../assets/js/demo/chart-area-demo.js"></script>
+    <script src="../assets/js/demo/chart-pie-demo.js"></script>
 
 </body>
 

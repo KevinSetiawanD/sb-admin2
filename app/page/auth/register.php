@@ -1,7 +1,7 @@
 <?php
 
-require('../../../database/koneksi.php');
-
+$pdo = Koneksi::connect();
+$auth = new auth($pdo);
 
 if (isset($_POST['register'])) {
 
@@ -10,11 +10,10 @@ if (isset($_POST['register'])) {
     $role     = $_POST['role'];
     $password = $_POST['password'];
 
-
-    $hashPassword = password_hash('$password', PASSWORD_BCRYPT);
-    $query_sql = "INSERT INTO user (id_user, nama, username, password, role) VALUES (NULL,'$nama','$username','$hashPassword','$role')";
-    $result = mysqli_query($koneksi, $query_sql);
+    $auth->register($nama, $username, $password, $role);
 }
+
+$pdo = Koneksi::disconnect();
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +28,7 @@ if (isset($_POST['register'])) {
     <meta name="author" content="">
 
     <title>Register</title>
-    <link href="../../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 </head>
@@ -77,7 +76,7 @@ if (isset($_POST['register'])) {
                             <hr>
 
                             <div class="text-center">
-                                <a class="small" href="../auth/login.php">Already have an account? Login!</a>
+                                <a class="small" href="index.php?auth=login">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>
@@ -87,14 +86,14 @@ if (isset($_POST['register'])) {
 
     </div>
 
-    <link href="../../../assets/css/sb-admin-2.min.css" rel="stylesheet">
-    <script src="../../../assets/vendor/jquery/jquery.min.js"></script>
-    <script src="../../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="../../../assets/js/sb-admin-2.min.js"></script>
-    <script src="../../../assets/vendor/chart.js/Chart.min.js"></script>
-    <script src="../../../assets/js/demo/chart-area-demo.js"></script>
-    <script src="../../../assets/js/demo/chart-pie-demo.js"></script>
+    <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../assets/js/sb-admin-2.min.js"></script>
+    <script src="../assets/vendor/chart.js/Chart.min.js"></script>
+    <script src="../assets/js/demo/chart-area-demo.js"></script>
+    <script src="../assets/js/demo/chart-pie-demo.js"></script>
 
 </body>
 

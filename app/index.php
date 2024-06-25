@@ -1,88 +1,115 @@
 <?php
 include '../database/koneksi.php';
+include '../database/class/auth.php';
+session_start();
+
+$pdo = Koneksi::connect();
+$auth = new auth($pdo);
+
+$pdo = Koneksi::disconnect();
+
+if (!$auth->isLogin() && $auth->isLogin() == false) {
+    $log = isset($_GET['auth']) ? $_GET['auth'] : 'auth';
+    switch ($log) {
+        case 'login':
+            include 'page/auth/login.php';
+            break;
+        case 'register':
+            include 'page/auth/register.php';
+            break;
+        default:
+            include 'page/auth/login.php';
+            break;
+    }
+} else {
+
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
+    <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <title>Dashboard</title>
+        <title>Dashboard</title>
 
-    <?php
-    include 'page/layout/stylecss.php';
-    ?>
-</head>
-
-<body id="page-top">
-
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-
-        <!-- Sidebar -->
         <?php
-        include 'page/layout/sidebar.php';
+        include 'page/layout/stylecss.php';
         ?>
-        <!-- End of Sidebar -->
+    </head>
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+    <body id="page-top">
 
-            <!-- Main Content -->
-            <div id="content">
+        <!-- Page Wrapper -->
+        <div id="wrapper">
 
-                <!-- Topbar -->
-                <?php
-                include 'page/layout/header.php';
-                ?>
-                <!-- End of Topbar -->
+            <!-- Sidebar -->
+            <?php
+            include 'page/layout/sidebar.php';
+            ?>
+            <!-- End of Sidebar -->
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
 
+                <!-- Main Content -->
+                <div id="content">
 
-
-
+                    <!-- Topbar -->
                     <?php
-                    $page = isset($_GET["page"]) ? $_GET["page"] : "";
-                    switch ($page) {
-                        case "user":
-                            include 'page/user/default.php';
-                            break;
-                        default:
-                            include 'page/dashboard/index.php';
-                            break;
-                    }
+                    include 'page/layout/header.php';
                     ?>
+                    <!-- End of Topbar -->
+
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid">
 
 
 
+
+                        <?php
+                        $page = isset($_GET["page"]) ? $_GET["page"] : "";
+                        switch ($page) {
+                            case "user":
+                                include 'page/user/default.php';
+                                break;
+                            default:
+                                include 'page/dashboard/index.php';
+                                break;
+                        }
+                        ?>
+
+
+
+
+                    </div>
 
                 </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+
+                <!-- End of Footer -->
 
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-
-            <!-- End of Footer -->
+            <!-- End of Content Wrapper -->
 
         </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
+        <!-- End of Page Wrapper -->
 
 
-    <?php
-    require 'page/layout/stylejs.php';
-    ?>
-</body>
+        <?php
+        require 'page/layout/stylejs.php';
+        ?>
+    </body>
 
-</html>
+    </html>
+<?php
+}
+?>
