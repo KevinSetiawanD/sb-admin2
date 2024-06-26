@@ -40,18 +40,18 @@ $pdo = Koneksi::disconnect();
                 </li>
                 <li>
                     <label for="username">Username : </label>
-                    <input type="text" name="username" id="username" class="col-sm-10 mb-3 mb-sm-0" value="<?= $username; ?>">
+                    <input type="text" name="username" id="username" class="col-sm-10 mb-3 mb-sm-0" require value="<?= $username; ?>">
                 </li>
                 <li>
                     <label for="role">Role : </label>
-                    <select class="form-control " name="role" id="role" class="col-sm-10 mb-3 mb-sm-0" value="<?= $roll ?>">
+                    <select class="form-control " name="role" id="role" class="col-sm-10 mb-3 mb-sm-0" require value="<?= $roll ?>">
                         <option value="admin">admin</option>
                         <option value="superAdmin">superAdmin</option>
                     </select>
                 </li>
                 <li>
                     <label for="password">Password : </label>
-                    <input type="password" name="password" id="passsword" class="col-sm-10 mb-3 mb-sm-0" value="<?= $password; ?>">
+                    <input type="password" name="password" id="password" class="col-sm-10 mb-3 mb-sm-0" require value="<?= $password; ?>">
                 </li> <br>
                 <li>
                     <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">ubah data</button>

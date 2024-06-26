@@ -12,13 +12,13 @@ if (!$auth->isLogin() && $auth->isLogin() == false) {
     $log = isset($_GET['auth']) ? $_GET['auth'] : 'auth';
     switch ($log) {
         case 'login':
-            include 'page/auth/login.php';
+            include 'auth/login.php';
             break;
         case 'register':
-            include 'page/auth/register.php';
+            include 'auth/register.php';
             break;
         default:
-            include 'page/auth/login.php';
+            include 'auth/login.php';
             break;
     }
 } else {
@@ -40,7 +40,7 @@ if (!$auth->isLogin() && $auth->isLogin() == false) {
         <title>Dashboard</title>
 
         <?php
-        include 'page/layout/stylecss.php';
+        include 'layout/stylecss.php';
         ?>
     </head>
 
@@ -51,7 +51,7 @@ if (!$auth->isLogin() && $auth->isLogin() == false) {
 
             <!-- Sidebar -->
             <?php
-            include 'page/layout/sidebar.php';
+            include 'layout/sidebar.php';
             ?>
             <!-- End of Sidebar -->
 
@@ -63,7 +63,7 @@ if (!$auth->isLogin() && $auth->isLogin() == false) {
 
                     <!-- Topbar -->
                     <?php
-                    include 'page/layout/header.php';
+                    include 'layout/header.php';
                     ?>
                     <!-- End of Topbar -->
 
@@ -78,6 +78,12 @@ if (!$auth->isLogin() && $auth->isLogin() == false) {
                         switch ($page) {
                             case "user":
                                 include 'page/user/default.php';
+                                break;
+                            case "customer":
+                                include 'page/customer/default.php';
+                                break;
+                            case "product":
+                                include 'page/product/default.php';
                                 break;
                             default:
                                 include 'page/dashboard/index.php';
@@ -105,7 +111,7 @@ if (!$auth->isLogin() && $auth->isLogin() == false) {
 
 
         <?php
-        require 'page/layout/stylejs.php';
+        require 'layout/stylejs.php';
         ?>
     </body>
 

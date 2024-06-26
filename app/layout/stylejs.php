@@ -5,3 +5,5 @@
 <script src="../assets/vendor/chart.js/Chart.min.js"></script>
 <script src="../assets/js/demo/chart-area-demo.js"></script>
 <script src="../assets/js/demo/chart-pie-demo.js"></script>
+<script src="../assets/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>

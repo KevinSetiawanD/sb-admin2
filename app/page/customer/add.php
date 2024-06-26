@@ -2,14 +2,14 @@
 
 if (isset($_POST["submit"])) {
     $nama = $_POST["nama"];
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $role = $_POST["role"];
+    $no_telp = $_POST["no_telp"];
+    $alamat = $_POST["alamat"];
     $pdo = Koneksi::connect();
 
-    $user = new user($pdo);
+    $customer = new customer($pdo);
 
-    if ($user->tambah($nama, $username, $password, $role)) {
+    if ($customer->tambah($nama, $no_telp, $alamat)) {
+        echo "<script>window.location.href = 'index.php?page=customer'</script>";
     }
 
     $pdo = Koneksi::disconnect();
@@ -36,19 +36,12 @@ if (isset($_POST["submit"])) {
                             <input type="text" name="nama" id="nama">
                         </div>
                         <div class="form-group">
-                            <label for="username">Username : </label> <br>
-                            <input type="text" name="username" id="username">
+                            <label for="no_telp">No Telp : </label> <br>
+                            <input type="text" name="no_telp" id="no_telp">
                         </div>
                         <div class="form-group">
-                            <label for="role">Role : </label> <br>
-                            <select type="text" name="role" id="role">
-                                <option name="role" id="" value="admin">admin</option>
-                                <option name="role" id="" value="superAdmin">superAdmin</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password : </label> <br>
-                            <input type="password" name="password" id="passsword">
+                            <label for="alamat">Alamat : </label> <br>
+                            <input type="text" name="alamat" id="alamat">
                         </div> <br>
                         <div class="form-group">
                             <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block col-20">Tambah data</button>

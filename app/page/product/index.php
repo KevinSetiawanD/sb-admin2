@@ -1,5 +1,5 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">User</h1>
+    <h1 class="h3 mb-0 text-gray-800">Product</h1>
     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 </div>
 
@@ -7,7 +7,7 @@
 <!-- Content Row -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">User</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Product</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -16,30 +16,20 @@
 
                     <tr>
                         <th>No.</th>
-                        <th>Nama</th>
-                        <th>Username</th>
-                        <th>Role</th>
+                        <th>Nama barang</th>
+                        <th>Jumlah barang</th>
+                        <th>Harga barang</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
-                <tfoot>
 
-                    <tr>
-                        <th>No.</th>
-                        <th>Nama</th>
-                        <th>Username</th>
-                        <th>Role</th>
-                        <th>Aksi</th>
-                    </tr>
-                    <tbody>
-                        <?php $i = 1; ?>
-                </tfoot>
+                <?php $i = 1; ?>
                 <?php
 
                 $pdo = Koneksi::connect();
-                $user = new user($pdo);
+                $product = new product($pdo);
 
-                $orang = $user->view();
+                $orang = $product->view();
 
 
                 foreach ($orang as $row) :
@@ -47,12 +37,12 @@
                     <tr>
 
                         <td><?= $i; ?></td>
-                        <td><?= $row["nama"] ?></td>
-                        <td><?= $row["username"] ?></td>
-                        <td><?= $row["role"] ?></td>
+                        <td><?= $row["nama_product"] ?></td>
+                        <td><?= $row["jumlah_product"] ?></td>
+                        <td>Rp. <?= number_format($row["harga_product"]) ?></td>
                         <td>
-                            <a href="index.php?page=user&act=update&id=<?= $row["id_user"]; ?>">edit</a> |
-                            <a href="index.php?page=user&act=delete&id=<?= $row["id_user"]; ?>" onclick="return confirm('yakin?');">hapus</a>
+                            <a href="index.php?page=product&act=update&id=<?= $row["id_product"]; ?>">edit</a> |
+                            <a href="index.php?page=product&act=delete&id=<?= $row["id_product"]; ?>" onclick="return confirm('yakin?');">hapus</a>
                         </td>
                     </tr>
                     <?php $i++ ?>
@@ -60,7 +50,6 @@
 
                 $pdo = Koneksi::disconnect();
                 ?>
-                </tbody>
             </table>
         </div>
 

@@ -50,8 +50,34 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="index.php?page=user">Customer</a>
-                <a class="collapse-item" href="index.php?page=user&act=create">Tambah customer</a>
+                <a class="collapse-item" href="index.php?page=customer">Customer</a>
+                <a class="collapse-item" href="index.php?page=customer&act=create">Tambah customer</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+            <i class="fas fa-fw fa-basket-shopping"></i>
+            <span>Product</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="index.php?page=product">Product</a>
+                <a class="collapse-item" href="index.php?page=product&act=create">Tambah product</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+            <i class="fas fa-fw fa-basket-shopping"></i>
+            <span>Transaksi</span>
+        </a>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="index.php?page=transaksi">Transaksi</a>
+                <a class="collapse-item" href="index.php?page=transaksi&act=create">Tambah transaksi</a>
             </div>
         </div>
     </li>

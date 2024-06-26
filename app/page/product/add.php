@@ -1,15 +1,15 @@
 <?php
 
 if (isset($_POST["submit"])) {
-    $nama = $_POST["nama"];
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $role = $_POST["role"];
+    $nama_barang = $_POST["nama_barang"];
+    $jumlah_barang = $_POST["jumlah_barang"];
+    $harga_barang = $_POST["harga_barang"];
     $pdo = Koneksi::connect();
 
-    $user = new user($pdo);
+    $product = new product($pdo);
 
-    if ($user->tambah($nama, $username, $password, $role)) {
+    if ($product->tambah($nama_barang, $jumlah_barang, $harga_barang)) {
+        echo "<script>window.location.href = 'index.php?page=product'</script>";
     }
 
     $pdo = Koneksi::disconnect();
@@ -32,23 +32,16 @@ if (isset($_POST["submit"])) {
                 <form action="" method="post">
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="nama">Nama : </label> <br>
-                            <input type="text" name="nama" id="nama">
+                            <label for="nama_barang">Nama barang : </label> <br>
+                            <input type="text" name="nama_barang" id="nama_barang">
                         </div>
                         <div class="form-group">
-                            <label for="username">Username : </label> <br>
-                            <input type="text" name="username" id="username">
+                            <label for="jumlah_barang">Jumlah barang : </label> <br>
+                            <input type="number" name="jumlah_barang" id="jumlah_barang">
                         </div>
                         <div class="form-group">
-                            <label for="role">Role : </label> <br>
-                            <select type="text" name="role" id="role">
-                                <option name="role" id="" value="admin">admin</option>
-                                <option name="role" id="" value="superAdmin">superAdmin</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password : </label> <br>
-                            <input type="password" name="password" id="passsword">
+                            <label for="harga_barang">Harga barang : </label> <br>
+                            <input type="number" name="harga_barang" id="harga_barang">
                         </div> <br>
                         <div class="form-group">
                             <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block col-20">Tambah data</button>
