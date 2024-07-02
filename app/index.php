@@ -85,6 +85,9 @@ if (!$auth->isLogin() && $auth->isLogin() == false) {
                             case "product":
                                 include 'page/product/default.php';
                                 break;
+                            case "transaksi":
+                                include 'page/transaksi/default.php';
+                                break;
                             default:
                                 include 'page/dashboard/index.php';
                                 break;
@@ -100,7 +103,9 @@ if (!$auth->isLogin() && $auth->isLogin() == false) {
                 <!-- End of Main Content -->
 
                 <!-- Footer -->
-
+                <?php
+                include 'layout/footer.php';
+                ?>
                 <!-- End of Footer -->
 
             </div>
