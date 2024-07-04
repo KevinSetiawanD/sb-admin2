@@ -1,8 +1,8 @@
 <?php
 $pdo = Koneksi::connect();
-$customer = new customer($pdo);
+$supplier = new supplier($pdo);
 
-$id_customer = $_GET['id'];
+$id_supplier = $_GET['id'];
 
 if (isset($_POST["submit"])) {
     $nama = $_POST["nama"];
@@ -10,12 +10,12 @@ if (isset($_POST["submit"])) {
     $alamat = $_POST["alamat"];
 
 
-    if ($customer->ubah($id_customer, $nama, $no_telp, $alamat)) {
-        echo "<script>window.location.href = 'index.php?page=customer'</script>";
+    if ($supplier->ubah($id_supplier, $nama, $no_telp, $alamat)) {
+        echo "<script>window.location.href = 'index.php?page=supplier'</script>";
     }
 }
-if (isset($id_customer)) {
-    extract($customer->getCustomer($id_customer));
+if (isset($id_supplier)) {
+    extract($supplier->getsupplier($id_supplier));
 }
 $pdo = Koneksi::disconnect();
 

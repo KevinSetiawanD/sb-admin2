@@ -1,13 +1,13 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Product</h1>
+    <h1 class="h3 mb-0 text-gray-800">Supplier</h1>
 </div>
 
 
 <!-- Content Row -->
 <div class="card shadow mb-4">
     <div class="card-header py-3 d-sm-flex align-items-center justify-content-between mb-4">
-        <h4 class="m-0 font-weight-bold text-primary">Product</h4>
-        <a href="index.php?page=product&act=create" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Tambah Product</a>
+        <h4 class="m-0 font-weight-bold text-primary">Supplier</h4>
+        <a href="index.php?page=supplier&act=create" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Tambah supplier</a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -16,10 +16,9 @@
 
                     <tr>
                         <th>No.</th>
-                        <th>Nama barang</th>
-                        <th>Gambar</th>
-                        <th>Jumlah barang</th>
-                        <th>Harga barang</th>
+                        <th>Nama</th>
+                        <th>No Telp</th>
+                        <th>Alamat</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -28,9 +27,9 @@
                 <?php
 
                 $pdo = Koneksi::connect();
-                $product = new product($pdo);
+                $supplier = new supplier($pdo);
 
-                $orang = $product->view();
+                $orang = $supplier->view();
 
 
                 foreach ($orang as $row) :
@@ -38,17 +37,14 @@
                     <tr>
 
                         <td><?= $i; ?></td>
-                        <td><?= $row["nama_product"] ?></td>
+                        <td><?= $row["nama"] ?></td>
+                        <td><?= $row["no_telp"] ?></td>
+                        <td><?= $row["alamat"] ?></td>
                         <td>
-                            <img src="page/product/img/<?= $row["gambar_product"] ?>" width="90px" alt="gambar">
-                        </td>
-                        <td><?= $row["jumlah_product"] ?></td>
-                        <td>Rp. <?= number_format($row["harga_product"]) ?></td>
-                        <td>
-                            <a class="btn btn-warning btn-circle" href="index.php?page=product&act=update&id=<?= $row["id_product"]; ?>">
+                            <a class="btn btn-warning btn-circle" href="index.php?page=supplier&act=update&id=<?= $row["id_supplier"]; ?>">
                                 <i class="fa fa-pen"></i>
                             </a> |
-                            <a class="btn btn-danger btn-circle" href="index.php?page=product&act=delete&id=<?= $row["id_product"]; ?>" onclick="return confirm('yakin?');">
+                            <a class="btn btn-danger btn-circle" href="index.php?page=supplier&act=delete&id=<?= $row["id_supplier"]; ?>" onclick="return confirm('yakin?');">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>

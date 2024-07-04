@@ -28,9 +28,9 @@ class user
         return $stmt->fetchAll();
     }
 
-    public function ubah($id_user, $nama, $username, $password, $role)
+    public function ubah($id_user, $nama, $username, $role)
     {
-        $stmt = $this->db->prepare("UPDATE user SET nama = '$nama', username = '$username', password = '$password', role = '$role' WHERE id_user = $id_user");
+        $stmt = $this->db->prepare("UPDATE user SET nama = '$nama', username = '$username', role = '$role' WHERE id_user = $id_user");
         $stmt->execute();
 
         return true;

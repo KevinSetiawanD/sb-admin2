@@ -10,9 +10,9 @@ class product
         $this->db = $db_conn;
     }
 
-    public function tambah($nama_barang, $jumlah_barang, $harga_barang)
+    public function tambah($nama_barang, $jumlah_barang, $harga_barang, $gambar_barang)
     {
-        $stmt = $this->db->prepare("INSERT INTO product VALUES ('', '$nama_barang', '$jumlah_barang', '$harga_barang')");
+        $stmt = $this->db->prepare("INSERT INTO product VALUES ('', '$nama_barang', '$jumlah_barang', '$harga_barang', '$gambar_barang')");
         $stmt->execute();
 
         return true;

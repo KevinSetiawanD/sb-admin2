@@ -22,29 +22,28 @@ if (isset($_POST["submit"])) {
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Tambah Customer</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
     <!-- Content Row -->
     <div class="row">
-        <div class="col-12 col-sm-8  col-md-6 col-lg-6 col-xl-4">
+        <div class="col-12 col-sm-8  col-md-6 col-lg-6 col-xl-30">
             <div class="card">
-                <form action="" method="post">
+                <form action="" method="post" class="user">
                     <div class="card-body">
                         <div class="form-group">
                             <label for="nama">Nama : </label> <br>
-                            <input type="text" name="nama" id="nama">
+                            <input type="text" name="nama" id="nama" class="form-control form-control-user">
                         </div>
                         <div class="form-group">
                             <label for="no_telp">No Telp : </label> <br>
-                            <input type="text" name="no_telp" id="no_telp">
+                            <input type="text" name="no_telp" id="no_telp" class="form-control form-control-user">
                         </div>
                         <div class="form-group">
                             <label for="alamat">Alamat : </label> <br>
-                            <input type="text" name="alamat" id="alamat">
+                            <input type="text" name="alamat" id="alamat" class="form-control form-control-user">
                         </div> <br>
                         <div class="form-group">
-                            <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block col-20">Tambah data</button>
+                            <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">Tambah data</button>
                         </div>
                     </div>
                 </form>

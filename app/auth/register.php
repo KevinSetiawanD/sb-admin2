@@ -27,7 +27,8 @@ $pdo = Koneksi::disconnect();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Register</title>
+    <title>REGISTER</title>
+
     <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -48,24 +49,20 @@ $pdo = Koneksi::disconnect();
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
                             <form class="user" method="POST">
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control " name="nama" id="nama" placeholder="nama" autofocus required>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control " name="username" id="username" placeholder="username">
-                                    </div>
-                                    <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
-                                        <select class="form-control " name="role" id="role">
-                                            <option value="admin">admin</option>
-                                            <option value="superAdmin">superAdmin</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" name="nama" id="nama" placeholder="Nama" autofocus required>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control " name="password" id="password" placeholder="password">
-                                    </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" name="username" id="username" placeholder="Username">
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control form-control-user" name="role" id="role">
+                                        <option value="admin">admin</option>
+                                        <option value="superAdmin">superAdmin</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Password">
                                 </div>
                                 <button type="submit" name="register" class="btn btn-primary btn-user btn-block">
                                     Register Account
@@ -73,16 +70,16 @@ $pdo = Koneksi::disconnect();
 
 
                             </form>
-                            <hr>
-
-                            <div class="text-center">
-                                <a class="small" href="index.php?auth=login">Already have an account? Login!</a>
-                            </div>
+                        </div>
+                        <hr>
+                        <div class="text-center">
+                            <a class="small" href="index.php?auth=login">Already have an account? Login!</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
     </div>
 

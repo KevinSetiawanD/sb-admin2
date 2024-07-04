@@ -1,17 +1,17 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Customer</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 </div>
 
 
 <!-- Content Row -->
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Customer</h6>
+    <div class="card-header py-3 d-sm-flex align-items-center justify-content-between mb-4">
+        <h4 class="m-0 font-weight-bold text-primary">User</h4>
+        <a href="index.php?page=customer&act=create" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Tambah Customer</a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                 <thead>
 
                     <tr>
@@ -41,8 +41,12 @@
                         <td><?= $row["no_telp"] ?></td>
                         <td><?= $row["alamat"] ?></td>
                         <td>
-                            <a href="index.php?page=customer&act=update&id=<?= $row["id_customer"]; ?>">edit</a> |
-                            <a href="index.php?page=customer&act=delete&id=<?= $row["id_customer"]; ?>" onclick="return confirm('yakin?');">hapus</a>
+                            <a class="btn btn-warning btn-circle" href="index.php?page=customer&act=update&id=<?= $row["id_customer"]; ?>">
+                                <i class="fa fa-pen"></i>
+                            </a> |
+                            <a class="btn btn-danger btn-circle" href="index.php?page=customer&act=delete&id=<?= $row["id_customer"]; ?>" onclick="return confirm('yakin?');">
+                                <i class="fas fa-trash"></i>
+                            </a>
                         </td>
                     </tr>
                     <?php $i++ ?>

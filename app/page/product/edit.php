@@ -34,22 +34,22 @@ $pdo = Koneksi::disconnect();
     <div class="row">
         <div class="col-12 col-sm-8  col-md-6 col-lg-6 col-xl-4">
             <div class="card">
-                <form action="" method="post">
+                <form action="" method="post" class="user">
                     <div class="card-body">
                         <div class="form-group">
                             <label for="nama_produk">Nama barang : </label> <br>
-                            <input type="text" name="nama_produk" id="nama_produk" required value="<?= $nama_product ?>">
+                            <input type="text" name="nama_produk" id="nama_produk" class="form-control form-control-user" required value="<?= $nama_product ?>">
                         </div>
                         <div class=" form-group">
                             <label for="jumlah_barang">Jumlah barang : </label> <br>
-                            <input type="number" name="jumlah_barang" id="jumlah_barang" value="<?= $jumlah_product ?>">
+                            <input type="number" name="jumlah_barang" id="jumlah_barang" class="form-control form-control-user" value="<?= $jumlah_product ?>">
                         </div>
                         <div class=" form-group">
                             <label for="harga_barang">Harga barang : </label> <br>
-                            <input type="number" name="harga_barang" id="harga_barang" value="<?= $harga_product ?>">
+                            <input type="number" name="harga_barang" id="harga_barang" class="form-control form-control-user" value="<?= $harga_product ?>">
                         </div> <br>
                         <div class=" form-group">
-                            <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block col-20">Ubah data</button>
+                            <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">Ubah data</button>
                         </div>
                     </div>
                 </form>

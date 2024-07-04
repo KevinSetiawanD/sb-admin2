@@ -66,6 +66,22 @@ class auth
         }
     }
 
+    public function getUser()
+    {
+        if (!$this->isLogin()) {
+            return false;
+        }
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM user WHERE id_user = :id_user");
+            $stmt->bindParam(":id_user", $_SESSION['user_session']);
+            $stmt->execute();
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
     public function logout()
     {
         //hapus Session

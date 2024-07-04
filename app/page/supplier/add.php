@@ -1,16 +1,15 @@
 <?php
 
 if (isset($_POST["submit"])) {
-    $nama_barang = $_POST["nama_barang"];
-    $jumlah_barang = $_POST["jumlah_barang"];
-    $harga_barang = $_POST["harga_barang"];
-    $gambar_barang = $_POST["gambar_barang"];
+    $nama = $_POST["nama"];
+    $no_telp = $_POST["no_telp"];
+    $alamat = $_POST["alamat"];
     $pdo = Koneksi::connect();
 
-    $product = new product($pdo);
+    $supplier = new supplier($pdo);
 
-    if ($product->tambah($nama_barang, $jumlah_barang, $harga_barang, $gambar_barang)) {
-        echo "<script>window.location.href = 'index.php?page=product'</script>";
+    if ($supplier->tambah($nama, $no_telp, $alamat)) {
+        echo "<script>window.location.href = 'index.php?page=supplier'</script>";
     }
 
     $pdo = Koneksi::disconnect();
@@ -22,7 +21,7 @@ if (isset($_POST["submit"])) {
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Tambah Barang</h1>
+        <h1 class="h3 mb-0 text-gray-800">Tambah supplier</h1>
     </div>
 
     <!-- Content Row -->
@@ -32,16 +31,16 @@ if (isset($_POST["submit"])) {
                 <form action="" method="post" class="user">
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="nama_barang">Nama barang : </label> <br>
-                            <input type="text" name="nama_barang" id="nama_barang" class="form-control form-control-user">
+                            <label for="nama">Nama : </label> <br>
+                            <input type="text" name="nama" id="nama" class="form-control form-control-user">
                         </div>
                         <div class="form-group">
-                            <label for="jumlah_barang">Jumlah barang : </label> <br>
-                            <input type="number" name="jumlah_barang" id="jumlah_barang" class="form-control form-control-user">
+                            <label for="no_telp">No Telp : </label> <br>
+                            <input type="text" name="no_telp" id="no_telp" class="form-control form-control-user">
                         </div>
                         <div class="form-group">
-                            <label for="harga_barang">Harga barang : </label> <br>
-                            <input type="number" name="harga_barang" id="harga_barang" class="form-control form-control-user">
+                            <label for="alamat">Alamat : </label> <br>
+                            <input type="text" name="alamat" id="alamat" class="form-control form-control-user">
                         </div> <br>
                         <div class="form-group">
                             <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">Tambah data</button>

@@ -5,6 +5,7 @@ session_start();
 
 $pdo = Koneksi::connect();
 $auth = new auth($pdo);
+$userskrg = $auth->getUser();
 
 $pdo = Koneksi::disconnect();
 
@@ -37,7 +38,7 @@ if (!$auth->isLogin() && $auth->isLogin() == false) {
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Dashboard</title>
+        <title>KASIR</title>
 
         <?php
         include 'layout/stylecss.php';
@@ -84,6 +85,9 @@ if (!$auth->isLogin() && $auth->isLogin() == false) {
                                 break;
                             case "product":
                                 include 'page/product/default.php';
+                                break;
+                            case "supplier":
+                                include 'page/supplier/default.php';
                                 break;
                             case "transaksi":
                                 include 'page/transaksi/default.php';
